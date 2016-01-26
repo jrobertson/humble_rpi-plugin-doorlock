@@ -28,13 +28,13 @@ class HumbleRPiPluginDoorLock
       a = case state
 
         when 'open'
-          [:unlock]
+          [:unlock, duration]
         when 'unlock'
-          [:unlock]          
+          [:unlock, duration]
         when 'close'
-          [:lock]
+          [:lock, duration]
         when 'lock'
-          [:lock]
+          [:lock, duration]
       end
 
       @door[index.to_i].send(*a)

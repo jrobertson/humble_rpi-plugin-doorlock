@@ -3,15 +3,15 @@
 # file: humble_rpi-plugin-doorlock.rb
 
 
-require 'rpi'
+require 'simple_raspberrypi'
 
 
 class HumbleRPiPluginDoorLock
 
   def initialize(settings: {}, variables: {})
-
-    @gpio_pins = settings[:pins]
     
+    @gpio_pins = settings[:pins]
+
   end
   
   def on_doorlock_message(message)
@@ -43,7 +43,7 @@ class HumbleRPiPluginDoorLock
 
   def start()
 
-    @door = RPi.new(@gpio_pins).pins  if @gpio_pins.any?    
+    @door = SimpleRaspberryPi.new(@gpio_pins).pins  if @gpio_pins.any?    
     
   end
   
